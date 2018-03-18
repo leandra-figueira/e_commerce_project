@@ -13,6 +13,7 @@ ActiveAdmin.register Product do
 # end
   permit_params :name, :description, :stock_quantity, :price, :category_id, :image
 
+  # have a look on Kyle's video, it is done in a different way
   index do
     column :name
     column :description
@@ -27,6 +28,10 @@ ActiveAdmin.register Product do
   end
 
   form do |f|
+
+    # this was added in class - display errors if there is any
+    f.semantic_errors *f.object.errors.keys
+
     f.inputs "Product Details" do
       f.input :name
       f.input :description
