@@ -9,35 +9,15 @@
       <% end %>
     </ul>
   </div>
-
   <div class="col-lg-10 col-md-9 col-sm-8">
-    <h1>List all</h1>
-    <div class="row">
-
-        <% @products.each do |product| %>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="card border-primary">
-
-          <% if !product.image.nil? %>
-            <%= image_tag product.image, :class => "card-img-top" %>
-          <% end %>
-
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= link_to product.name , product_path(product) %>
-            </h4>
-            <h5><%= number_to_currency product.price %></h5>
-            <p class="card-text"><%= product.description %></p>
-
-            <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-          </div>
-        </div>
-        </div>
-        <% end %>
-
+    <div class="row justify-content-end">
+      <%= paginate @products %>
     </div>
+    <%= render partial: 'shared_products_view/products', object: @products %>
   </div>
 </div>
+<!--to style with Bootstrap: https://www.youtube.com/watch?v=dqDcPOlwisM-->
+
 
 
 

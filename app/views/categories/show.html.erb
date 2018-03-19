@@ -1,2 +1,16 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+
+<div class="row">
+  <div class="col-lg-2 col-md-3 col-sm-4">
+    <ul class="list-group ">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <strong>Categories</strong>
+      </li>
+      <% @categories.each do |category| %>
+        <%= link_to category.name , category_path(category) , class: "list-group-item d-flex justify-content-between align-items-center"%>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-lg-10 col-md-9 col-sm-8">
+    <%= render partial: 'shared_products_view/products', object: @products %>
+  </div>
+</div>
