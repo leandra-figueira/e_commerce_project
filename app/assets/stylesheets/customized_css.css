@@ -1,0 +1,25 @@
+header {
+    width: 100%;
+    height: 180px;
+    background-image: url('wallpaper.jpg');
+    background-size: cover;
+    font-size: 32px;
+    color: #fff;
+}
+
+nav.ui.inverted.segment {
+    margin-top: 0;
+    border-radius:0;
+}
+
+.card{
+    margin-bottom: 10px;
+}
+.title{
+    color:#EDEDEF;
+    font-size: 1.8em;
+    float: right;
+    margin-top: 1em;
+    margin-right: 1em;
+    font-weight: 700;
+}

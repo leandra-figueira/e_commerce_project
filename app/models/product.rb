@@ -5,6 +5,9 @@ class Product < ApplicationRecord
   has_attached_file :image
 
   def image_attributes=(attributes)
+    # Marks the attachment for destruction on next save,
+    # if the attributes hash contains a _destroy flag
+    # and a new avatar was not uploaded at the same time:
     image.clear if has_destroy_flag?(attributes) && !image.dirty?
   end
 end
