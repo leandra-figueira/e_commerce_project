@@ -40,6 +40,7 @@ gem 'devise'
 # Added paperclip gem to handle the image upload
 gem 'paperclip'
 
+
 # Added Semantic UI
 # gem 'semantic-ui-sass'
 #
@@ -47,6 +48,7 @@ gem 'paperclip'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
