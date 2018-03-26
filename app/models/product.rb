@@ -15,4 +15,5 @@ class Product < ApplicationRecord
       where('categories_id = ?', category_id).joins(:category)
     end
   end
+
 end

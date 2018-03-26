@@ -1,2 +1,18 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="row">
+  <%= render partial: 'shared_products_view/menu', object: @categories %>
+  <div class="col-lg-9">
+    <div class="card mt-4">
+
+      <% if !@product.image.nil? %>
+        <%= image_tag @product.image.url, :class => "card-img-top" %>
+      <% end %>
+
+      <div class="card-body">
+        <h3 class="card-title"><%=@product.name%></h3>
+        <h4><%=number_to_currency @product.price%></h4>
+        <p class="card-text"><%=@product.description%></p>
+
+      </div>
+    </div>
+  </div>
+</div>

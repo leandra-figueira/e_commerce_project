@@ -13,8 +13,11 @@
           </h4>
           <h5><%= number_to_currency product.price %></h5>
           <p class="card-text"><%= product.description %></p>
-
-          <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Quantity</label>
+            <input type="text" class="form-control" id="inputDefault">
+          </div>
+          <a href="#" class="btn btn-outline-primary">Add to cart</a>
         </div>
       </div>
     </div>

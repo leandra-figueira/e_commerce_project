@@ -1,2 +1,8 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="row">
+  <%= render partial: 'shared_products_view/menu', object: @categories %>
+  <div class="col-lg-9">
+    <div class="card mt-4">
+      <%= render partial: 'shared_products_view/products', object: @products %>
+    </div>
+  </div>
+</div>
