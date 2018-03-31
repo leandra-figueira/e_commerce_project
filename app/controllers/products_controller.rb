@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
     @search = Product.ransack(params[:q])
     @products = @search.result.page params[:page]
     @search.build_condition
+
+    session[:count_cart_products] ||= 0
+    session[:count_cart_products] += 1
   end
 
   # GET /products/:id

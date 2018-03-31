@@ -24,3 +24,14 @@ nav.ui.inverted.segment {
     font-weight: 700;
 }
 
+.fa-shopping-cart, .cart {
+    color:#fff;
+    font-size: 1.8em;
+}
+
+.prod {
+    padding-top: 10px;
+    padding-left: 30px;
+    color: #ffffff;
+}
+
