@@ -15,15 +15,19 @@ Rails.application.routes.draw do
   # root to: 'home#index'
   # root to: 'categories#home/index'
 
-  resources :products, only: [:index, :show]
-  # root to: 'products#index'
-  #   collection do
-  #     get :add_products_to_cart
-  #   end
-  #   member do
-  #     # post
-  #   end
-  # end
+  resources :products, only: [:index, :show] do
+    collection do
+      post :clear_cart
+    end
+    member do
+      post :add_to_cart # POST /products/:id/add_to_cart
+      post :remove_from_cart  # POST /products/:id/remove_from_cart
+    end
+  end
+
+  resources :cart, only: [:show]
+
+  root to: 'products#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

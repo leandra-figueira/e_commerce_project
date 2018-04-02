@@ -17,7 +17,10 @@
             <label class="col-form-label" for="inputDefault">Quantity</label>
             <input type="text" class="form-control" id="inputDefault">
           </div>
-          <a href="#" class="btn btn-outline-primary">Add to cart</a>
+          <div class="to_cart">
+            <!--Remote: true - adding AJAX/JS to the page-->
+            <a><%= link_to("Add to cart", add_to_cart_product_path(product), remote: true, method: :post) %> </a>
+          </div>
         </div>
       </div>
     </div>

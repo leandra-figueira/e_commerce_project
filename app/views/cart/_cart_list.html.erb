@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Product Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Unit Price</th>
+    <th scope="col">Total</th>
+  </tr>
+  </thead>
+  <% @products_on_cart.each do |product| %>
+    <tbody>
+    <tr class="table-light">
+      <th scope="row"><%= product.name %></th>
+      <td><%= product.description %></td>
+      <td>Column content</td>
+      <td><%= number_to_currency product.price %></td>
+      <td>Total</td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>

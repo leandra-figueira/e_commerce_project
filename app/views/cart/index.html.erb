@@ -1,2 +1,18 @@
-<h1>Cart#index</h1>
-<p>Find me in app/views/cart/index.html.erb</p>
+<div class="row">
+  <%= render partial: 'shared_products_view/menu', object: @categories %>
+  <div class="col-lg-9">
+    <br/>
+    <div class="row">
+      <h3 class="mr-auto">My Shopping Cart</h3>
+      <div>
+        <h4 class="pull-right"><%= link_to("Empty cart", clear_cart_products_path, remote: true, method: :post) %> </h4>
+      </div>
+    </div>
+    <br/>
+    <div class="clear_cart">
+      <%= render partial: "cart/cart_list", object: @products_on_cart %>
+    </div>
+  </div>
+</div>
+
+

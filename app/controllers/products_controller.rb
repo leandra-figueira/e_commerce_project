@@ -1,18 +1,52 @@
 class ProductsController < ApplicationController
-  # GET /products
+  before_action :initialize_session
+  before_action :load_shopping_cart
+
   def index
     @categories = Category.all
     @search = Product.ransack(params[:q])
     @products = @search.result.page params[:page]
     @search.build_condition
 
-    session[:count_cart_products] ||= 0
-    session[:count_cart_products] += 1
+    # session[:count_cart_products] ||= 0
+    # session[:count_cart_products] += 1
   end
 
   # GET /products/:id
   def show
     @categories = Category.all
     @product = Product.find(params[:id])
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+
+    unless session[:add_to_cart].include?(id)
+      session[:add_to_cart] << id
+      # this is how the quantity was updated before, now I will implement JS
+      # redirect_to home_index_path
+    end
+
+    @success_alert = "You sucessfully added the product to your shopping cart."
+  end
+  # Automatically load the view: add_to_cart.js.erb
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:add_to_cart].delete(id)
+  end
+
+  def clear_cart
+    session[:add_to_cart] = []
+  end
+
+  private
+  def initialize_session
+    session[:add_to_cart] ||= []
+  end
+
+  def load_shopping_cart
+    # @products_on_cart = Product.find(session[:add_to_cart])
+    # render "/cart/index"
   end
 end
