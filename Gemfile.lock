@@ -265,6 +265,7 @@ DEPENDENCIES
   devise
   font-awesome-sass (~> 4.7.0)
   jbuilder (~> 2.5)
+  jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
   paperclip
