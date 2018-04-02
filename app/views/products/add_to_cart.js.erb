@@ -6,6 +6,10 @@ var alerts = document.querySelector("#alerts")
   alerts.innerHTML = "<%= j render 'layouts/shared/success_alert' %>"
 <% end %>
 
+<% if @error_alert %>
+  alerts.innerHTML = "<%= j render 'layouts/shared/error_alert' %>"
+<% end %>
+
 prods.innerHTML = "<%= j pluralize session[:add_to_cart].count, 'Product' %>"
 
 

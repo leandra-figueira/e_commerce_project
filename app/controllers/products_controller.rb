@@ -23,11 +23,14 @@ class ProductsController < ApplicationController
 
     unless session[:add_to_cart].include?(id)
       session[:add_to_cart] << id
+      @success_alert = "You sucessfully added the product to your shopping cart."
       # this is how the quantity was updated before, now I will implement JS
       # redirect_to home_index_path
+    else
+      @error_alert = "Product already added to your cart."
     end
 
-    @success_alert = "You sucessfully added the product to your shopping cart."
+
   end
   # Automatically load the view: add_to_cart.js.erb
 
