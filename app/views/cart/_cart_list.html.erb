@@ -13,10 +13,17 @@
     <tr class="table-light">
       <th scope="row"><%= product.name %></th>
       <td><%= product.description %></td>
-      <td>Column content</td>
+      <td>
+        <div class="form-group quantity_input">
+          <div class="row">
+
+          </div>
+        </div>
+      </td>
       <td><%= number_to_currency product.price %></td>
-      <td>Total</td>
+      <% @total = @qnty.to_i * product.price %>
+      <td><%= @total %></td>
     </tr>
     </tbody>
-  <% end %>
+<% end %>
 </table>

@@ -43,3 +43,7 @@ nav.ui.inverted.segment {
     margin: 2em;
     z-index: 3000;
 }
+
+.quantity_input{
+    width: 25%;
+}
