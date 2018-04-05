@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.order(:name)
     # @products = Product.all
     @search = Product.ransack(params[:q])
 

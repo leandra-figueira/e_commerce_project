@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @categories = Category.all
+    @categories = Category.order(:name)
     @products = Category.find(params[:id]).products.order(:name).page(params[:category_id])
     # @products = Category.find(params[:id]), page(params[:page], params[:category_id])
     # @products = Product.order(:name).page(params[:term])

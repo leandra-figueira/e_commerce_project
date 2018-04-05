@@ -1,6 +1,7 @@
 var prods = document.querySelector(".number_of_prods")
-var clear_cart = document.querySelector(".clear_cart")
+// var clear_cart = document.querySelector(".clear_cart")
 var alerts = document.querySelector("#alerts")
+var empty = document.querySelector(".empty")
 
 <% if @success_alert %>
   alerts.innerHTML = "<%= j render 'layouts/shared/success_alert' %>"
@@ -11,6 +12,8 @@ var alerts = document.querySelector("#alerts")
 <% end %>
 
 prods.innerHTML = "<%= j pluralize session[:add_to_cart].count, 'Product' %>"
+
+
 
 
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get '/about', to: 'about#about', as: 'about'
   get '/contact', to: 'contact#contact', as: 'contact'
+  post '/cart', to: 'cart#cart', as: 'cart'
 
   root to: 'home#index'
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :cart, only: [:index]
+
 
   root to: 'products#index'
 

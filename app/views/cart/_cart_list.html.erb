@@ -16,14 +16,22 @@
       <td>
         <div class="form-group quantity_input">
           <div class="row">
-
+            <%= form_tag("/cart", method: "post") do %>
+              <%= label_tag(:qnty)%>
+              <%= text_field_tag(:qnty) %>
+              <%= submit_tag("Reload") %>
+            <% end %>
           </div>
         </div>
       </td>
       <td><%= number_to_currency product.price %></td>
-      <% @total = @qnty.to_i * product.price %>
-      <td><%= @total %></td>
+
+        <% @total = product.price * @quantity %>
+
+      <td><%= number_to_currency @total %></td>
     </tr>
     </tbody>
+    <%= @quantity %>
+    <%= params.inspect %>
 <% end %>
 </table>

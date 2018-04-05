@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :load_shopping_cart
 
   def index
-    @categories = Category.all
+    @categories = Category.order(:name)
     @search = Product.ransack(params[:q])
     @products = @search.result.page params[:page]
     @search.build_condition
@@ -14,15 +14,17 @@ class ProductsController < ApplicationController
 
   # GET /products/:id
   def show
-    @categories = Category.all
+    @categories = Category.order(:name)
     @product = Product.find(params[:id])
   end
 
   def add_to_cart
     id = params[:id].to_i
+    qnty = params[:Quantity]
 
-    unless session[:add_to_cart].include?(id)
+    unless (session[:add_to_cart].include?(id)) && (qnty > 0)
       session[:add_to_cart] << id
+      session[:quantity] = qnty
       @success_alert = "You sucessfully added the product to your shopping cart."
     else
       @error_alert = "Product already added to your cart."
@@ -44,6 +46,8 @@ class ProductsController < ApplicationController
   private
   def initialize_session
     session[:add_to_cart] ||= []
+    session[:quantity] = 0
+    qnty = 0
   end
 
   def load_shopping_cart

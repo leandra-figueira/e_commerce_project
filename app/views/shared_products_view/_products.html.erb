@@ -14,13 +14,19 @@
           <h5><%= number_to_currency product.price %></h5>
           <p class="card-text"><%= product.description %></p>
           <div class="form-group">
-            <label class="col-form-label" for="inputDefault">Quantity</label>
-            <input type="text" class="form-control" id="inputDefault">
-          </div>
-          <div class="to_cart">
-            <!--Remote: true - adding AJAX/JS to the page-->
-            <a><%= link_to("Add to cart", add_to_cart_product_path(product), remote: true, method: :post) %> </a>
-          </div>
+            <!--<label class="col-form-label" for="inputDefault">Quantity</label>-->
+            <!--<input type="text" class="form-control" id="inputDefault">-->
+            <%= form_tag do %>
+              <%= label_tag(:qnty, "Quantity")%>
+              <%= text_field_tag  'Quantity' %>
+
+
+              </div>
+              <div class="to_cart">
+                <!--Remote: true - adding AJAX/JS to the page-->
+                <a><%= link_to("Add to cart", add_to_cart_product_path(product), remote: true, method: :post) %> </a>
+              </div>
+            <% end %>
         </div>
       </div>
     </div>
