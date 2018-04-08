@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get '/about', to: 'about#about', as: 'about'
   get '/contact', to: 'contact#contact', as: 'contact'
-  post '/cart', to: 'cart#cart', as: 'cart'
 
   root to: 'home#index'
 
@@ -26,7 +25,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cart, only: [:index]
+  resources :cart, only: [:index] do
+    member do
+      post :reload_quantity
+    end
+  end
 
 
   root to: 'products#index'

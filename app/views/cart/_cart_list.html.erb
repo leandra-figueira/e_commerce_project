@@ -16,22 +16,32 @@
       <td>
         <div class="form-group quantity_input">
           <div class="row">
-            <%= form_tag("/cart", method: "post") do %>
-              <%= label_tag(:qnty)%>
-              <%= text_field_tag(:qnty) %>
-              <%= submit_tag("Reload") %>
+            <%= form_for product, url: reload_quantity_cart_path(product), method: :post do |f| %>
+              <%= text_field_tag :quantity, @quantity, min: 0 %>
+              <%= f.submit("Reload") %>
             <% end %>
+
           </div>
         </div>
       </td>
       <td><%= number_to_currency product.price %></td>
 
-        <% @total = product.price * @quantity %>
+        <% @total = product.price  %>
 
       <td><%= number_to_currency @total %></td>
     </tr>
     </tbody>
-    <%= @quantity %>
-    <%= params.inspect %>
-<% end %>
+  <% end %>
+  <tbody>
+    <tr>
+      <td>Subtotal</td>
+    </tr>
+    <tr>
+      <td>Taxes</td>
+      <td>select province</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+    </tr>
+  </tbody>
 </table>

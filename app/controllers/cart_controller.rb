@@ -5,11 +5,15 @@ class CartController < ApplicationController
     @categories = Category.order(:name)
     @cart = Product.find(session[:add_to_cart])
     @products_on_cart = Product.find(session[:add_to_cart])
+
   end
 
-  def cart
-    @quantity = params[:qnty]
+  def reload_quantity
+    @quantity = params[:quantity]
+    redirect_to cart_index_path
   end
+
+
 
 
   private
