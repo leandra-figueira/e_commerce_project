@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'customer/new'
+
+  get 'customer/create'
+
   get 'order/new'
 
   get 'order/create'

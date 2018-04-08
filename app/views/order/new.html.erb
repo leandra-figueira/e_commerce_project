@@ -1,2 +1,6 @@
-<h1>Order#new</h1>
-<p>Find me in app/views/order/new.html.erb</p>
+<h2>Customer Information</h2>
+
+<%= form_for @customer, url: {action: "create"}, html:{class: "form-group"} do |f| %>
+<%= f.text_field :first_name %>
+<%= f.text_area :body, size: "60x12" %>
+<%end%>
