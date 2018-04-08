@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'order/new'
+
+  get 'order/create'
+
   get 'cart/index'
 
   get 'contact/contact'
