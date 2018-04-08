@@ -3,9 +3,14 @@ class CartController < ApplicationController
 
   def index
     @categories = Category.order(:name)
-    @cart = Product.find(session[:add_to_cart])
-    @products_on_cart = Product.find(session[:add_to_cart])
+    @cart = session[:add_to_cart]
+    # @products_on_cart = Product.find(session[:add_to_cart])  // delete after
 
+    @selected_ids = []
+    @cart.each do |prod|
+      @selected_ids << prod["id"]
+    end
+    @products_on_cart = Product.find(@selected_ids)
   end
 
   def reload_quantity

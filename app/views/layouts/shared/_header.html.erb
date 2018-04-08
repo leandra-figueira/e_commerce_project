@@ -30,4 +30,8 @@
   </div>
 </nav>
 
-<%= session[:add_to_cart][0] %>
+<% product = session[:add_to_cart][0] %>
+<% if product != nil %>
+  <%= "This is the first product id: #{product["id"]} " %>
+  <%= "This is the first product quantity: #{product["quantity"]}" %>
+<%end%>

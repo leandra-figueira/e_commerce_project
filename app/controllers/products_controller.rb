@@ -8,8 +8,6 @@ class ProductsController < ApplicationController
     @products = @search.result.page params[:page]
     @search.build_condition
 
-    # session[:count_cart_products] ||= 0
-    # session[:count_cart_products] += 1
   end
 
   # GET /products/:id
@@ -20,18 +18,20 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     id = params[:id].to_i
-    quantity = params[:qnty].to_i
+    
+    prod_found = false
+    session[:add_to_cart].each do |product|
+      if product["id"] == id
+        prod_found = true
+      end
+    end
 
-    # qnty = params[:Quantity]
-
-    unless (session[:add_to_cart].include?(id))
-      # session[:add_to_cart] = []
-      session[:add_to_cart] << id
-      # session[:add_to_cart] << Product.first(id)
-      # session[:quantity] = qnty
-      @success_alert = "You sucessfully added the product to your shopping cart."
-    else
+    if prod_found
       @error_alert = "Product already added to your cart."
+    else
+      selectedProduct = {"id" => id, "quantity" => 1 }
+      session[:add_to_cart] << selectedProduct
+      @success_alert = "You sucessfully added the product to your shopping cart."
     end
 
 
