@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   end
 
   resources :cart, only: [:index] do
-    member do
+    collection do
       post :reload_quantity
+      post :delete_item
     end
   end
 

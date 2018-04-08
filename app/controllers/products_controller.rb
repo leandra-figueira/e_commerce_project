@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     id = params[:id].to_i
-    
+
     prod_found = false
     session[:add_to_cart].each do |product|
       if product["id"] == id

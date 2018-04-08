@@ -6,42 +6,37 @@
     <th scope="col">Quantity</th>
     <th scope="col">Unit Price</th>
     <th scope="col">Total</th>
+    <th scope="col">&nbsp;</th>
   </tr>
   </thead>
-  <% @products_on_cart.each do |product| %>
+  <% @cart_array.each do |p_hash| %>
     <tbody>
     <tr class="table-light">
-      <th scope="row"><%= product.name %></th>
-      <td><%= product.description %></td>
+      <th scope="row"><%= p_hash["name"] %></th>
+      <td><%= p_hash["description"] %></td>
       <td>
         <div class="form-group quantity_input">
           <div class="row">
-            <%= form_for product, url: reload_quantity_cart_path(product), method: :post do |f| %>
-              <%= text_field_tag :quantity, @quantity, min: 0 %>
-              <%= f.submit("Reload") %>
-            <% end %>
 
+            <%= link_to(raw(icon('fas', 'sync')), reload_quantity_cart_index_path, remote: true,
+                        method: :post, :class=>"btn btn-default") %>
           </div>
         </div>
       </td>
-      <td><%= number_to_currency product.price %></td>
+      <td><%= number_to_currency p_hash["price"] %></td>
 
-        <% @total = product.price  %>
 
       <td><%= number_to_currency @total %></td>
+      <td><%= link_to(raw(icon('fas', 'trash')), delete_item_cart_index_path, remote: true,
+                    method: :post, :class=>"btn btn-default") %></td>
     </tr>
     </tbody>
   <% end %>
   <tbody>
     <tr>
-      <td>Subtotal</td>
-    </tr>
-    <tr>
-      <td>Taxes</td>
-      <td>select province</td>
-    </tr>
-    <tr>
-      <td>Total</td>
+      <td colspan="3"></td>
+      <th>Subtotal</th>
+      <td>$XX.XX</td>
     </tr>
   </tbody>
 </table>

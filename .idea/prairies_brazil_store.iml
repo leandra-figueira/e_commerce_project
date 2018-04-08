@@ -56,7 +56,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.7.1, Remote: ruby-2.5.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, Remote: ruby-2.5.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.23, Remote: ruby-2.5.0-p0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="font-awesome-sass (v4.7.0, Remote: ruby-2.5.0-p0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="font-awesome-sass (v5.0.6.2, Remote: ruby-2.5.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formtastic (v3.1.5, Remote: ruby-2.5.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formtastic_i18n (v0.6.0, Remote: ruby-2.5.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.1, Remote: ruby-2.5.0-p0) [gem]" level="application" />

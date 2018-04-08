@@ -49,7 +49,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'kaminari'
 gem 'ransack'
-gem 'font-awesome-sass', '~> 4.7.0'
+gem 'font-awesome-sass', '~> 5.0.6.1'
 gem 'jquery-rails'
 
 group :development, :test do
