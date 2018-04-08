@@ -4,25 +4,21 @@ class CartController < ApplicationController
   def index
     @categories = Category.order(:name)
     @cart = session[:add_to_cart]
-    # @products_on_cart = Product.find(session[:add_to_cart])  // delete after
-
-    # @selected_ids = []
-    # @cart.each do |prod|
-    #   @selected_ids << prod["id"]
-    # end
-    # @products_on_cart = Product.find(@selected_ids)
-
     @cart_array = []
 
+    @subtotal = 0
     @cart.each do |prod|
       @prod_details =  Product.find(prod["id"])
-      @full_prod_hash = {"id" => @prod_details.id,
+      @full_prod_hash = {"id" => prod["id"],
                          "name" => @prod_details.name,
                          "description" => @prod_details.description,
                          "price" => @prod_details.price,
-                         "quantity" => 1 }
+                         "quantity" => prod["quantity"],
+                         "total" => @prod_details.price * prod["quantity"].to_i}
 
       @cart_array << @full_prod_hash
+
+      @subtotal += @full_prod_hash["total"]
     end
 
     session[:add_to_cart] = @cart_array
@@ -31,15 +27,27 @@ class CartController < ApplicationController
 
 
 
-
   end
 
   def reload_quantity
-    @quantity = params[:quantity]
+    quantity = params[:quantity]
+    selectedH = params[:selectedId]
+    selectedId = params[:selectedId].keys[0].to_i
+    array_products = session[:add_to_cart]
+    array_products.each do |prod|
+      if prod["id"] == selectedId
+        prod["quantity"] = quantity
+      end
+    end
+    session[:add_to_cart] = array_products
     redirect_to cart_index_path
   end
 
   def delete_item
+    selected_index = params[:selectedIndex].keys[0].to_i
+    array_products = session[:add_to_cart]
+    array_products.delete_at(selected_index)
+    session[:add_to_cart] = array_products
     redirect_to cart_index_path
   end
 

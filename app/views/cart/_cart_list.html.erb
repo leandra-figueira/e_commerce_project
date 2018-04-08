@@ -9,7 +9,7 @@
     <th scope="col">&nbsp;</th>
   </tr>
   </thead>
-  <% @cart_array.each do |p_hash| %>
+  <% @cart_array.each_with_index do |p_hash, index| %>
     <tbody>
     <tr class="table-light">
       <th scope="row"><%= p_hash["name"] %></th>
@@ -17,18 +17,24 @@
       <td>
         <div class="form-group quantity_input">
           <div class="row">
-
-            <%= link_to(raw(icon('fas', 'sync')), reload_quantity_cart_index_path, remote: true,
-                        method: :post, :class=>"btn btn-default") %>
+            <%= form_tag(reload_quantity_cart_index_path, method: 'post', remote: true ) do %>
+              <%= hidden_field :selectedId, p_hash["id"].to_i %>
+              <%= number_field_tag :quantity, p_hash["quantity"], min: 1 %>
+              <%= button_tag(raw(icon('fas', 'sync')), :id=>"button", :name=>"submit") %>
+            <% end %>
           </div>
         </div>
       </td>
       <td><%= number_to_currency p_hash["price"] %></td>
 
 
-      <td><%= number_to_currency @total %></td>
-      <td><%= link_to(raw(icon('fas', 'trash')), delete_item_cart_index_path, remote: true,
-                    method: :post, :class=>"btn btn-default") %></td>
+      <td><%= number_to_currency p_hash["total"] %></td>
+      <td>
+        <%= form_tag(delete_item_cart_index_path, method: 'post', remote: true ) do %>
+          <%= hidden_field :selectedIndex, index %>
+          <%= button_tag(raw(icon('fas', 'trash')), :id=>"button", :name=>"submit") %>
+        <% end %>
+      </td>
     </tr>
     </tbody>
   <% end %>
@@ -36,7 +42,7 @@
     <tr>
       <td colspan="3"></td>
       <th>Subtotal</th>
-      <td>$XX.XX</td>
+      <td><%= number_to_currency @subtotal %></td>
     </tr>
   </tbody>
 </table>

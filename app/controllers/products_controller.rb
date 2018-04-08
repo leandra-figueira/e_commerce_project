@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
+
     id = params[:id].to_i
 
     prod_found = false
