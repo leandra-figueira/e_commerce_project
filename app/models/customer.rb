@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable
 
   validates :first_name, :last_name, :email, :street, :number, :zipcode, :province_id, :city, presence: true
   validates :first_name, :last_name, length: {minimum: 2}
