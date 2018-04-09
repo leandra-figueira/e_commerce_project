@@ -29,5 +29,7 @@ class OrderController < ApplicationController
   end
 
   def create
+    @order = Order.new
+
   end
 end
