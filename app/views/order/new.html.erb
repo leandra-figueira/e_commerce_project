@@ -1,0 +1,60 @@
+<% if !customer_signed_in? %>
+ <p>Please, log in.</p>
+<% else %>
+  <div class="container">
+    <p><h1>My information</h1></br></p>
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <label for="firstname">Name: </label>
+            <label for="firstname"><%= @full_name %></label></br>
+
+            <label for="address">Address: </label>
+            <label for="address"><%= @address %></label></br>
+
+            <label for="city">City: </label>
+            <label for="city"><%= @customer.city %></label></br>
+
+            <label for="province">Province: </label>
+            <label for="Province"><%= @customer.province.name %></label>
+          </div>
+        </div>
+
+        <p><h1>My Order</h1></br></p>
+        <div class="row">
+          <div class="col-lg-9">
+            <% @final_produts.each do |fp| %>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <label for="product_name">Product Name: </label>
+                  <label for="subtotal"><%= fp["name"] %></label></br>
+                  <label for="product_quantity">Quantity: </label>
+                  <label for="product_quantity"><%= fp["quantity"] %></label></br>
+                  <label for="product_total">Amount: </label>
+                  <label for="product_total"><%= number_to_currency fp["total"] %></label></br>
+                </div>
+              </div>
+            <% end %>
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+              <label for="subtotal"><strong>Subtotal: </strong></label>
+              <label for="subtotal"><strong><%= number_to_currency @subtotal %></strong></label></br>
+
+              <label for="taxes"><strong>Taxes: </strong></label>
+              <label for="taxes"><strong><%= number_to_currency @taxes %></strong></label></br>
+
+              <label for="total"><strong>Total: </strong></label>
+              <label for="total"><strong><%= number_to_currency @total %></strong></label></br>
+
+          </div>
+        </div>
+      </div>
+      </div>
+        <a class="btn bnt-primary" href="#">Process Payment</a>
+      </div>
+    </div>
+  </div>
+<% end %>

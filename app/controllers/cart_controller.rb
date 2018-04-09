@@ -19,6 +19,7 @@ class CartController < ApplicationController
       @cart_array << @full_prod_hash
 
       @subtotal += @full_prod_hash["total"]
+      session[:subtotal] = @subtotal
     end
 
     session[:add_to_cart] = @cart_array
@@ -56,5 +57,6 @@ class CartController < ApplicationController
     def initialize_variable
       @quantity = 0
       @total = 0
+      session[:subtotal] ||= 0
     end
 end
