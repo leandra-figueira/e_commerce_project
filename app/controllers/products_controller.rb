@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @search = Product.ransack(params[:q])
     @products = @search.result.page params[:page]
     @search.build_condition
-
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/:id

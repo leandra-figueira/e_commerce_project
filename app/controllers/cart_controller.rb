@@ -1,6 +1,10 @@
 class CartController < ApplicationController
   before_action :initialize_variable
 
+  def show
+    @order_items = current_order.order_items
+  end
+
   def index
     @categories = Category.order(:name)
     @cart = session[:add_to_cart]
@@ -58,5 +62,6 @@ class CartController < ApplicationController
       @quantity = 0
       @total = 0
       session[:subtotal] ||= 0
+      session[:add_to_cart] ||= []
     end
 end

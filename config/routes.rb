@@ -46,8 +46,11 @@ Rails.application.routes.draw do
     end
   end
 
-
-
+  resources :order do
+    collection do
+      post :create_order
+    end
+  end
 
   root to: 'products#index'
 
