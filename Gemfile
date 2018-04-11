@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
@@ -33,24 +32,25 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Active admin handles the admin activiies and permissions of the page.Has a dependency to work: devise
+# Active admin handles the admin activiies and permissions of the page.
+# Has a dependency to work: devise
 gem 'activeadmin'
 gem 'devise'
 
 # Added paperclip gem to handle the image upload
 gem 'paperclip'
 
-
 # Added Semantic UI
 # gem 'semantic-ui-sass'
 #
 # added bootstrap
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-gem 'kaminari'
-gem 'ransack'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-sass', '~> 5.0.6.1'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'ransack'
+gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,7 +64,8 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the background.
+  # Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
